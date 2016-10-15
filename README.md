@@ -1,7 +1,7 @@
 # Friend-Finder---Node-and-Express-Servers
 
-*Description: Friend Finder app demonstrating Node and Express with jQuery and AJAX.
-Overall purpose is to help schedule reservation requests.
+Friend Finder app demonstrating Node and Express with jQuery and AJAX.
+Overall purpose is a web app designed to help find a compatible friend.
 Learning to set up web servers with Node.js using Express.
 
 ##### Screenshot 1
@@ -21,4 +21,4 @@ Learning to set up web servers with Node.js using Express.
 
 ##### Getting Started
 * **Clone or fork and run using server.js in the command line.**
-* **Uses localhost:4000**
+* **Use localhost:4000**
