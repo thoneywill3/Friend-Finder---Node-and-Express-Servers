@@ -1,30 +1,22 @@
-// Dependencies
-// =============================================================
-var express = require('express');
-var bodyParser = require('body-parser');
-var path = require('path');
+// ===============================================================================
+// LOAD DATA
+// Linking the routes to "data" sources that hold the array friends data
+// ===============================================================================
 
-var reservations = require('./app/data/table.js');
-var waitlist = require('./app/data/waitlist.js');
-// =============================================================
-var app = express();
-var PORT = process.env.PORT || 4000; // Sets an initial port.
+var friends = require('../data/friend.js');
 
-// Sets up the Express app to handle data parsing
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
-
-// Routes
-// ===========================================
-require('./app/routing/api-routes.js')(app);
-require('./app/routing/html-routes.js')(app);
-//============================================
-
-// Starts the server to begin listening
-// =============================================================
-app.listen(PORT, function () {
-    console.log('App listening on PORT ' + PORT);
-
+module.exports = function (app) {
+// //api path to get the friends data, responds with a json object (an array of friends)
+app.get('/api/friends', function (req,res) {
+    res.json(reservations);
 });
+
+// *** Just updates an array of friends data and sends back the json form of the new friend
+app.post('/api/friends', function (req, res) {
+    var newFriend = req.body;
+    newFriend.routeName = newFriend.friendName.replace(/\s+/g, '').toLowerCase();
+    friends.push(newFriend);
+    res.json(newFriend);
+});
+
+};
