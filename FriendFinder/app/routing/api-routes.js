@@ -3,12 +3,12 @@
 // Linking the routes to "data" sources that hold the array friends data
 // ===============================================================================
 
-var friends = require('../data/friend.js');
+var friends = require('../data/friends.js');
 
 module.exports = function (app) {
 // //api path to get the friends data, responds with a json object (an array of friends)
 app.get('/api/friends', function (req,res) {
-    res.json(reservations);
+    res.json(friends);
 });
 
 // *** Just updates an array of friends data and sends back the json form of the new friend
