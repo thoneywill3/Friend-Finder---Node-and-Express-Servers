@@ -7,20 +7,26 @@ body{
 }
 
 .jumbotron {
-    background: firebrick;
+    background-color: firebrick;
     color: white;
     opacity: .75;
     margin-top: 20px;
 }
 
-p.bold {
-    font-weight: bolder;
-}
-
-a.home {
-    font-weight: bolder;
-}
-
-.submit {
+#submit {
     background: firebrick;
+}
+
+#jumbo_h2 {
+    color: white;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+.panel-title {
+    color: firebrick;
 }

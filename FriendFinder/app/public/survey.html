@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Survey Page</title>
 
-    <!-- Simplex Bootstrap Theme -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" integrity="sha384-C0X5qw1DlkeV0RDunhmi4cUBUkPDTvUqzElcNWm1NI2T4k8tKMZ+wRPQOhZfSJ9N" crossorigin="anonymous">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="style.css">
 
@@ -17,11 +17,11 @@
         <div class="jumbotron">
             <h1 class="text-center"><i class="fa fa-female"></i> Friend Finder <i class="fa fa-male"></i></h1>
             <hr>
-            <h2 class="text-center">Fill out the survey and find a new friend</h2>
+            <h2 id="jumbo_h2" class="text-center">Let's get started - Fill out the survey</h2>
             <br>
 
             <div class="text-center">
-                <a class = "home" href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home">  Home</span></button></a>
+                <a href="/"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-home"></span>  Home</button></a>
             </div>
         </div>
         <div class="row">
@@ -155,7 +155,7 @@
                                 <br>
                                 <br>
 
-                            <button type="submit" id="submit" class="btn btn-primary submit">Submit</button>
+                            <button type="submit" id="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
 
@@ -170,12 +170,12 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal">X</button>
             <h2 class="modal-title"><strong>Your most compatible friend</strong></h2>
           </div>
           <div class="modal-body">
             <h2 id="matchName"></h2>
-            <img id="matchImg" alt="" height="500" width="570">
+            <img id="matchImg" src ="" alt="" height="350" width="300">
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" id="closeModal" data-dismiss="modal">Close</button>
@@ -201,17 +201,12 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
 <script>
 // Grab the URL of the website
 var currentURL = window.location.origin;
 // Capture the form inputs
 $("#submit").on("click", function(){
-    //event.preventDefault();
-  // Check if name and photo url are entered?
-  //var entered = false;
-  //if ($('#name').val().trim() !== "" && $('#photo').val().trim() !== "" ) {
-
+  //event.preventDefault();
 
     // Create an object for the user's data
     var userData = {
@@ -219,25 +214,23 @@ $("#submit").on("click", function(){
         photo: $("#photo").val(),
         scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
     }
-    console.log('survey.html, userData',userData);
 
-    console.log(currentURL);
 
     // AJAX post the data to the friends API.
     $.post(currentURL + "/api/friends", userData, function(data){
-    console.log('after .post response data',data);
+
       // Grab the result from the AJAX post so that the best match's name and photo are displayed.
       $("#matchName").text(data.name);
       $('#matchImg').attr("src", data.photo);
 
       // Show the modal with the best match
-      //$("#resultsModal").modal('');
-      $("#resultsModal").modal('show');
-
-      return false;
+      $("#resultsModal").modal('toggle');
+      // clear the input fields in the form
+      $("#name").val("");
+      $("#photo").val("");
 
     });
-
+    return false;
 });
 
 // modal logic
