@@ -8,7 +8,6 @@ var friends = require('../data/friends.js');
 module.exports = function (app) {
   // //api path to get the friends data, responds with a json object (an array of friends). Activated on both html pages with blue API Link
   app.get('/api/friends', function (req,res) {
-      console.log('app.get');
       res.json(friends);
   });
 
@@ -16,7 +15,6 @@ module.exports = function (app) {
   app.post('/api/friends', function (req, res) {
       // newFriend is the user that filled out the survey
       var newFriend = req.body;
-      console.log('in app.post, newFriend param',newFriend);
 
       // compute best match from scores
       var bestMatch = {};
@@ -37,12 +35,9 @@ module.exports = function (app) {
 
       for(var i = 0; i < friends.length; i++) {
         var totalDifference = 0;
-        var comparedFriend = friends[i];
-        console.log('app.post, comparedFriend',comparedFriend);
 
-
-        for(var k = 0; k < comparedFriend.scores.length; k++) {
-          var differenceOneScore = Math.abs(comparedFriend.scores[k] - newFriend.scores[k]);
+        for(var index = 0; index < friends[i].scores.length; index++) {
+          var differenceOneScore = Math.abs(friends[i].scores[index] - newFriend.scores[index]);
           totalDifference += differenceOneScore;
         }
 
@@ -53,11 +48,10 @@ module.exports = function (app) {
       }
 
       bestMatch = friends[bestMatchIndex];
-      console.log('.post, bestMatch',bestMatch);
 
       // Put new friend from survey in "database" array
       friends.push(newFriend);
-      console.log('end of .post, friends',friends);
+
       // return the best match friend
       res.json(bestMatch);
   });
