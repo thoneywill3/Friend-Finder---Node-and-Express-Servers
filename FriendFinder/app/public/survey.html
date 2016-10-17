@@ -4,14 +4,10 @@
     <meta charset="UTF-8">
     <title>Survey Page</title>
 
-    <!-- Latest compiled and minified CSS & JS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Simplex Bootstrap Theme -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/simplex/bootstrap.min.css" rel="stylesheet" integrity="sha384-C0X5qw1DlkeV0RDunhmi4cUBUkPDTvUqzElcNWm1NI2T4k8tKMZ+wRPQOhZfSJ9N" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="style.css">
-
-    <script src="https://use.fontawesome.com/0bf9ac1b8c.js"></script>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -198,43 +194,58 @@
 
     </div>
 
+    <script src="https://use.fontawesome.com/0bf9ac1b8c.js"></script>
+
+     <!-- jQuery Reference -->
+    <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
 <script>
-    // Capture the form inputs
+// Capture the form inputs
 $("#submit").on("click", function(){
+    //event.preventDefault();
   // Check if name and photo url are entered?
-  var entered = false;
-  if ($('#name').val().trim() !== "" && $('#photo').val().trim() !== "" )
+  //var entered = false;
+  //if ($('#name').val().trim() !== "" && $('#photo').val().trim() !== "" ) {
 
 
-// Create an object for the user's data
-var userData = {
-    name: $("#name").val(),
-    photo: $("#photo").val(),
-    scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
-}
-// Grab the URL of the website
-var currentURL = window.location.origin;
+    // Create an object for the user's data
+    var userData = {
+        name: $("#name").val(),
+        photo: $("#photo").val(),
+        scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
+    }
+    console.log('survey.html, userData',userData);
+    // Grab the URL of the website
+    var currentURL = window.location.origin;
+    console.log(currentURL);
 
-// AJAX post the data to the friends API.
-$.post(currentURL + "/api/friends", userData, function(data){
+    // AJAX post the data to the friends API.
+    $.post(currentURL + "/api/friends", userData, function(data){
+    console.log('after .post response data',data);
+      // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+      $("#matchName").text(data.name);
+      $('#matchImg').attr("src", data.photo);
 
-  // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-  $("#matchName").text(data.name);
-  $('#matchImg').attr("src", data.photo);
+      // Show the modal with the best match
+      $("#resultsModal").modal('toggle');
+      //$("#resultsModal").modal('show');
 
-  // Show the modal with the best match
-  $("#resultsModal").modal('toggle');
+      return false;
+
+    });
 
 });
 
-  $('#closeModal').click(function() {
+// modal logic
+$('#closeModal').click(function() {
     $.get('/',function(req,res){
-      // $(".body").load(res);
     location.replace(res);
     })
 });
 
-});
 </script>
 
 </body>
