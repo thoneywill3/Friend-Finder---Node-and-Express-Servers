@@ -155,7 +155,7 @@
                                 <br>
                                 <br>
 
-                            <button type="submit" class="btn btn-primary submit">Submit</button>
+                            <button type="submit" id="submit" class="btn btn-primary submit">Submit</button>
                         </form>
                     </div>
 
@@ -203,6 +203,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <script>
+// Grab the URL of the website
+var currentURL = window.location.origin;
 // Capture the form inputs
 $("#submit").on("click", function(){
     //event.preventDefault();
@@ -218,8 +220,7 @@ $("#submit").on("click", function(){
         scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val(), ]
     }
     console.log('survey.html, userData',userData);
-    // Grab the URL of the website
-    var currentURL = window.location.origin;
+
     console.log(currentURL);
 
     // AJAX post the data to the friends API.
