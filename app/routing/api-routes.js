@@ -41,12 +41,15 @@ module.exports = function (app) {
           totalDifference += differenceOneScore;
         }
 
+        // if the totalDifference in scores is less than the best match so far
+        // save that index and difference
         if (totalDifference < bestMatchDifference) {
           bestMatchIndex = i;
           bestMatchDifference = totalDifference;
         }
       }
 
+      // the best match index is used to get the best match data from the friends index
       bestMatch = friends[bestMatchIndex];
 
       // Put new friend from survey in "database" array

@@ -15,6 +15,9 @@
   "bugs": {
     "url": "https://github.com/clsavino/Friend-Finder---Node-and-Express-Servers/issues"
   },
+    "engines": {
+    "node": "4.4.7"
+  },
   "homepage": "https://github.com/clsavino/Friend-Finder---Node-and-Express-Servers#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
