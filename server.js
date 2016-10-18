@@ -8,7 +8,7 @@ var path = require('path');
 var friends = require('./app/data/friends.js');
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 4000; // Sets an initial port.
+var PORT = process.env.PORT || 3000; // Sets an initial port.
 
 //makes static assets in the public folder available (style.css)
 app.use(express.static('app/public'));
@@ -30,4 +30,4 @@ require('./app/routing/html-routes.js')(app);
 // app.listen(PORT, function () {
 //     console.log('App listening on PORT ' + PORT);
 // });
-app.listen(process.env.PORT || 4000);
+app.listen(process.env.PORT || 3000);

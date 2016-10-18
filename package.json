@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
     "url": "https://github.com/clsavino/Friend-Finder---Node-and-Express-Servers/issues"
   },
     "engines": {
-    "node": "4.4.7"
+    "node": "5.9.1"
   },
   "homepage": "https://github.com/clsavino/Friend-Finder---Node-and-Express-Servers#readme",
   "dependencies": {
