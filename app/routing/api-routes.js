@@ -18,7 +18,7 @@ module.exports = function (app) {
 
       // compute best match from scores
       var bestMatch = {};
-      var GreatestDifference= 40;//greatest score difference for a question is 4, therefore greatest difference is 4 times # of questions in survey
+
       for(var i = 0; i < newFriend.scores.length; i++) {
         if(newFriend.scores[i] == "1 (Strongly Disagree)") {
           newFriend.scores[i] = 1;
@@ -31,6 +31,7 @@ module.exports = function (app) {
       // compare the scores of newFriend with the scores of each friend in the database and find the friend with the smallest difference when each set of scores is compared
 
       var bestMatchIndex = 0;
+      //greatest score difference for a question is 4, therefore greatest difference is 4 times # of questions in survey
       var bestMatchDifference = 40;
 
       for(var i = 0; i < friends.length; i++) {

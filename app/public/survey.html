@@ -232,7 +232,10 @@ $("#submit").on("click", function(){
 
         });
     } else {
-        alert("Please complete the form before submitting");
+        $(".modal-title").text("Alert - Missing required information");
+        $(".modal.body").text("Please complete the form before submitting");
+        $("#resultsModal").modal('toggle');
+
     }
     return false;
 });
