@@ -232,8 +232,8 @@ $("#submit").on("click", function(){
 
         });
     } else {
-        $(".modal-title").text("Alert - Missing required information");
-        $(".modal.body").text("Please complete the form before submitting");
+        $(".modal-title").text("Missing required information");
+        $(".modal-body").html("<h3>Please complete the form before submitting</h3>");
         $("#resultsModal").modal('toggle');
 
     }

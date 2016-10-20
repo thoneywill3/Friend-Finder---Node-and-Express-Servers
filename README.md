@@ -22,3 +22,8 @@ Learning to set up web servers with Node.js using Express.
 ##### Getting Started
 * **Clone or fork and run using server.js in the command line.**
 * **Use localhost:4000**
+
+##### Acknowledgments
+Thanks to [Shaun](https://github.com/fullers) for the idea of using a modal for the alert to enter the required fields
+
+![Alert Modal](/images-readme/alert.PNG?raw=true)
